@@ -14,11 +14,25 @@ const fs = require('fs/promises');
 })()
 
 function solution1(input) {
-    return 'not impl'
+    return solution(4, input)
 }
 
-
 function solution2(input) {
-    return 'not impl'
+    return solution(14, input)
+}
+
+const solution = (size, input) => {
+    for (let i = 0; i < input.length-size+1; i++) {
+        const end = i + size
+        const segment = input.slice(i, end)
+        if (check(size, segment)) {
+            return end
+        }
+    }
+}
+
+const check = (size, str) => {
+    const s = new Set(str)
+    return s.size === size
 }
 
